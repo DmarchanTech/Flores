@@ -1,0 +1,267 @@
+/* Flores animadas: girasoles y tulipanes */
+.sunflower, .tulip {
+    position: absolute;
+    top: -60px;
+    width: 40px;
+    height: 40px;
+    opacity: 0.9;
+    animation: fall 6s linear infinite;
+}
+
+.sunflower {
+    left: 8vw;
+    animation-delay: 0s;
+    /* Centro */
+        background:
+            radial-gradient(circle at 50% 50%, #6b4f1d 45%, transparent 46%),
+            repeating-conic-gradient(from 0deg, #ffe600 0deg 38deg, transparent 38deg 45deg);
+        border-radius: 50%;
+        box-shadow: 0 2px 8px 0 #e6b80066;
+}
+.sunflower:nth-child(2) { left: 16vw; animation-delay: 0.3s; }
+.sunflower:nth-child(3) { left: 24vw; animation-delay: 0.6s; }
+.sunflower:nth-child(4) { left: 32vw; animation-delay: 0.9s; }
+.sunflower:nth-child(5) { left: 40vw; animation-delay: 1.2s; }
+
+.tulip {
+    left: 15vw;
+    animation-delay: 0.7s;
+    background: none;
+}
+.tulip:before, .tulip:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.tulip:before {
+    top: 8px;
+    width: 18px;
+    height: 24px;
+        background: linear-gradient(180deg, #ffe600 70%, #fff700 100%);
+    border-radius: 50% 50% 60% 60% / 60% 60% 100% 100%;
+    z-index: 1;
+}
+.tulip:after {
+    top: 28px;
+    width: 6px;
+    height: 18px;
+    background: linear-gradient(180deg, #3cb371 80%, #228b22 100%);
+    border-radius: 3px 3px 10px 10px;
+    z-index: 0;
+}
+.tulip:nth-child(6) { left: 48vw; animation-delay: 1.5s; }
+.tulip:nth-child(7) { left: 56vw; animation-delay: 1.8s; }
+.tulip:nth-child(8) { left: 64vw; animation-delay: 2.1s; }
+.tulip:nth-child(9) { left: 72vw; animation-delay: 2.4s; }
+.tulip:nth-child(10) { left: 80vw; animation-delay: 2.7s; }
+/* Pétalos amarillos animados */
+.petals-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.petal {
+        position: absolute;
+        top: -50px;
+        left: 0;
+            width: 38px;
+            height: 60px;
+            background: linear-gradient(180deg, #ffe600 70%, #ffce00 100%);
+                border-radius: 60% 80% 10% 90% / 100% 80% 10% 90%;
+        opacity: 0.85;
+        box-shadow: 0 2px 8px 0 #e6b80066;
+        transform: rotate(var(--rotate, 0deg));
+        animation: fall 5s linear infinite;
+    }
+}
+
+.petal:nth-child(1) { left: 10vw; animation-delay: 0s; --rotate: 15deg; }
+.petal:nth-child(2) { left: 25vw; animation-delay: 1s; --rotate: -10deg; }
+.petal:nth-child(3) { left: 40vw; animation-delay: 2s; --rotate: 25deg; }
+.petal:nth-child(4) { left: 55vw; animation-delay: 1.5s; --rotate: -20deg; }
+.petal:nth-child(5) { left: 70vw; animation-delay: 0.5s; --rotate: 10deg; }
+.petal:nth-child(6) { left: 85vw; animation-delay: 2.5s; --rotate: -15deg; }
+.petal:nth-child(7) { left: 60vw; animation-delay: 3s; --rotate: 30deg; }
+.petal:nth-child(8) { left: 35vw; animation-delay: 2.2s; --rotate: -25deg; }
+.petal:nth-child(9) { left: 80vw; animation-delay: 1.8s; --rotate: 5deg; }
+.petal:nth-child(10) { left: 50vw; animation-delay: 0.8s; --rotate: -5deg; }
+
+@keyframes fall {
+    0% {
+        top: -50px;
+        opacity: 0.85;
+        transform: rotate(var(--rotate, 0deg)) scale(1);
+    }
+    80% {
+        opacity: 0.85;
+        transform: rotate(calc(var(--rotate, 0deg) + 20deg)) scale(1.1);
+    }
+    100% {
+        top: 100vh;
+        opacity: 0.3;
+        transform: rotate(calc(var(--rotate, 0deg) + 40deg)) scale(0.9);
+    }
+}
+/* Centrado de todo el contenido principal */
+.center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;1,900&display=swap');
+*{
+    font-family: 'Poppins',cursive;
+}
+:root {
+  --dark-color: #010113;
+}
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: relative;
+}
+.greetings{
+    font-size: 6rem;
+    font-weight: 900;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.greetings > span{
+    animation: glow 2.5s ease-in-out infinite;
+}
+@keyframes glow{
+    0%, 100%{
+        color: #fff;
+        text-shadow: 0 0 12px #fbff00, 0 0 50px #fbff00, 0 0 100px #fbff00;
+    }
+    10%, 90%{
+        color: #696565;
+        text-shadow: none;
+    }
+}
+.night {
+    position: fixed;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    filter: blur(0.1vmin);
+    background-image: radial-gradient(
+            ellipse at top,
+            transparent 0%,
+            var(--dark-color)
+        ),
+        radial-gradient(
+            ellipse at bottom,
+            var(--dark-color),
+            rgba(145, 233, 255, 0.2)
+        ),
+        repeating-linear-gradient(
+            220deg,
+            rgb(0, 0, 0) 0px,
+            rgb(0, 0, 0) 19px,
+            transparent 19px,
+            transparent 22px
+        ),
+        repeating-linear-gradient(
+            189deg,
+            rgb(0, 0, 0) 0px,
+            rgb(0, 0, 0) 19px,
+            transparent 19px,
+            transparent 22px
+        ),
+        repeating-linear-gradient(
+            148deg,
+            rgb(0, 0, 0) 0px,
+            rgb(0, 0, 0) 19px,
+            transparent 19px,
+            transparent 22px
+        ),
+        linear-gradient(90deg, rgb(255, 94, 0), rgb(240, 240, 240));
+    z-index: -1;
+}
+.greetings > span:nth-child(2){
+    animation-delay: .2s ;
+}
+.greetings > span:nth-child(3){
+    animation-delay: .4s ;
+}
+.greetings > span:nth-child(4){
+    animation-delay: .6s;
+}
+.greetings > span:nth-child(5){
+    animation-delay: .8s;
+}
+
+.description{
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.button a{
+    text-decoration: none;
+    font-size: 1rem;
+    color: #111;
+}
+
+@media screen and (max-width:574px){
+    .greetings{
+        display: block;
+        font-size: 3rem;
+        font-weight: 500;
+        text-align: center;
+    }
+    .description{
+        font-size: 1rem;
+    }
+    
+    .button a{
+        font-size: .5rem;
+    }
+}
+
+.description{
+    color: #fbff00;
+}
+
+/* Estilo para el botón */
+.button button {
+    background-color: yellow; /* Fondo amarillo */
+    border: none; /* Sin bordes */
+    padding: 10px 20px; /* Ajusta el relleno según tu preferencia */
+    font-size: 18px; /* Tamaño de fuente */
+    cursor: pointer;
+    position: relative; /* Necesario para el resplandor */
+    border-radius: 20px; /* Esquinas redondeadas */
+    transition: background-color 0.3s ease-in-out; /* Transición suave para el color de fondo */
+  }
+  
+  /* Estilo para el enlace dentro del botón */
+  .button button a {
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    color: inherit; /* Hereda el color del texto del botón */
+  }
+  
+  /* Efecto de resplandor al pasar el cursor sobre el botón */
+  .button button:hover {
+    background-color: orange; /* Cambia el color de fondo al pasar el mouse a naranja */
+    box-shadow: 0 0 10px yellow, 0 0 20px yellow, 0 0 30px yellow; /* Efecto de resplandor amarillo */
+  }
+  
+  
